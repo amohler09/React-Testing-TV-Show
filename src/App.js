@@ -21,7 +21,7 @@ export default function App() {
           console.log('Res.data', res.data)
           setShow(res.data);
           setSeasons(formatSeasons(res.data._embedded.episodes));
-        });
+   });
     }, []);
 
   const handleSelect = e => {
@@ -29,15 +29,16 @@ export default function App() {
   };
 
   if (!show) {
-    return <h2>Fetching data...</h2>;
+    return <h2 data-testid='fetching'>Fetching data...</h2>;
   }
 
   return (
     <div className="App">
       <img className="poster-img" src={show.image.original} alt={show.name} />
-      <h1>{show.name}</h1>
+      <h1 data-testid='title'>{show.name}</h1>
       {parse(show.summary)}
       <Dropdown
+        data-testid='dropdown'
         options={Object.keys(seasons)}
         onChange={handleSelect}
         value={selectedSeason || "Select a season"}
@@ -47,3 +48,5 @@ export default function App() {
     </div>
   );
 }
+
+

@@ -5,7 +5,7 @@ export default function Episodes(props) {
   return (
     <div className="episodes">
       {props.episodes.map(e => (
-        <div className="episode" key={e.id}>
+        <div className="episode" key={e.id} data-testid='cards'>
           {e.image && (
             <img className="episode-image" src={e.image.medium} alt={e.name} />
           )}
@@ -23,3 +23,5 @@ export default function Episodes(props) {
     </div>
   );
 }
+
+// added a test ID to the first div being rendered for episodes.test file
